@@ -20,7 +20,6 @@ header {
 header h1 {
   margin: auto;
   width: max-content;
-  border: var(--white-border);
   font-size: 50px;
   font-weight: 700;
 }
@@ -28,16 +27,14 @@ header h1 {
 main {
   display: flex;
   height: 100%;
-  border: var(--black-border);
 }
 
 aside {
   width: 500px;
-  border: var(--black-border);
   padding: 15px;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: max-content;
 }
 
 aside h2 {
@@ -60,7 +57,6 @@ aside input {
 
 #weather-display {
   width: 65%;
-  border: var(--black-border);
   padding: 10px;
 }
 
