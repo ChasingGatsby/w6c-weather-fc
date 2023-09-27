@@ -1,11 +1,11 @@
 :root {
   --white-border: white;
-  --black-border: black;
+  --black-border: black solid;
 }
 
 header {
   background-color: #aa0078;
-  height: 110px;
+  height: 90px;
   color: white;
   display: flex;
 }
@@ -18,12 +18,19 @@ header h1 {
   font-weight: 700;
 }
 
+main {
+    display:flex;
+    height: 100%;
+    border:var(--black-border);
+}
+
 aside {
   width: 500px;
-  border: var(--black-border) solid;
+  border: var(--black-border);
   padding: 15px;
   display: flex;
   flex-direction: column;
+  height: 700px;
 }
 
 aside h2 {
@@ -40,4 +47,31 @@ aside input {
 .button {
   font-size: 25px;
   font-weight: bold;
+  background-color:#aa0078;
+  color: white;
+}
+
+#weather-display {
+    width: 65%;
+    border: var(--black-border);
+    padding: 10px;
+}
+
+#now-weather {
+    width: 100%;
+    border: var(--black-border);
+    height: 300px;
+    display:flex;
+    flex-direction: column;
+}
+
+#now-weather h2 {
+    padding: 10px;
+    font-size: 40px;
+}
+
+#now-weather p {
+    padding: 10px;
+    margin-bottom:20px;
+    font-size: 25px;
 }

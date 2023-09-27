@@ -11,11 +11,21 @@
     <header>
       <h1>Weather Dashboard</h1>
     </header>
-    <aside id="search-options">
-      <h2>Search for a City:</h2>
-      <input type="text" placeholder="e.g. Yonkers" id="searchterm" />
-      <input type="button" value="Search" class="button">
-    </aside>
+    <main>
+      <aside id="search-options">
+        <h2>Search for a City:</h2>
+        <input type="text" placeholder="e.g. Yonkers" id="searchterm" />
+        <input type="button" value="Search" class="button" />
+      </aside>
+      <section id="weather-display">
+        <div id="now-weather">
+            <h2>CITY AND DATE</h2>
+            <p>Temp</p>
+            <p>Wind</p>
+            <p>Humidity</p>
+        </div>
+      </section>
+    </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
