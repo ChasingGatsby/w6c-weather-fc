@@ -99,9 +99,11 @@ aside input {
 }
 
 .daycard h3 {
-  font-size: 25px;
+  font-size: 30px;
+  font-weight: 500px;
 }
 
 .daycard p {
-  margin-top: ;
+  margin: 25px 0;
+  font-size:20px;
 }
