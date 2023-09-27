@@ -1,0 +1,43 @@
+:root {
+  --white-border: white;
+  --black-border: black;
+}
+
+header {
+  background-color: #aa0078;
+  height: 110px;
+  color: white;
+  display: flex;
+}
+
+header h1 {
+  margin: auto;
+  width: max-content;
+  border: var(--white-border);
+  font-size: 50px;
+  font-weight: 700;
+}
+
+aside {
+  width: 500px;
+  border: var(--black-border) solid;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+aside h2 {
+  font-size: 40px;
+}
+
+aside input {
+  width: 100%;
+  margin: 20px 0 0 0;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.button {
+  font-size: 25px;
+  font-weight: bold;
+}
