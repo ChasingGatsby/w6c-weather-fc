@@ -64,7 +64,7 @@ aside input {
   padding: 10px;
 }
 
-#now-weather {
+.now-weather {
   width: 100%;
   border: var(--black-border);
   background-color: white;
@@ -73,12 +73,12 @@ aside input {
   flex-direction: column;
 }
 
-#now-weather h2 {
+.now-weather h2 {
   padding: 10px;
   font-size: 40px;
 }
 
-#now-weather p {
+.now-weather p {
   padding: 10px;
   margin-bottom: 20px;
   font-size: 25px;
