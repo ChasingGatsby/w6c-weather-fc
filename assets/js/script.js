@@ -1,6 +1,11 @@
 $(function () {
   let searchBtn = $(".search");
+  let coord;
+  let forecast = [];
+  forecast.length = 5;
+  console.log(forecast);
 
+  let todayWeather;
   $(document).ready(function () {
     searchBtn.on("click", function () {
       let searchTerm = $("#searchterm").val();
@@ -15,11 +20,35 @@ $(function () {
         })
         .then(function (data) {
           console.log(data);
-          let coord = {
+          coord = {
             lat: data[0].lat,
             lon: data[0].lon,
           };
-          console.log (coord)
+          console.log(coord);
+        })
+        .then(function () {
+          let weatherCond =
+            "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+            coord.lat +
+            "&lon=" +
+            coord.lon +
+            "&appid=abd9e26df26a80b0ccf0eded91e05ebc";
+          fetch(weatherCond)
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (data) {
+              console.log(data);
+              console.log(data);
+              todayWeather = {
+                date: data.list[0].dt,
+                temp: data.list[0].main.temp,
+                wind: data.list[0].wind.speed,
+                humidity: data.list[0].main.humidity,
+                icon: data.list[0].weather[0].icon,
+              };
+              console.log(todayWeather);
+            });
         });
     });
   });
