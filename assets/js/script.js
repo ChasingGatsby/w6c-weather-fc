@@ -2,8 +2,7 @@ $(function () {
   let searchBtn = $(".search");
   let coord;
   let forecast = [];
-  forecast.length = 5;
-  console.log(forecast);
+  let futureWeather;
 
   let todayWeather;
   $(document).ready(function () {
@@ -39,7 +38,6 @@ $(function () {
             })
             .then(function (data) {
               console.log(data);
-              console.log(data);
               todayWeather = {
                 date: data.list[0].dt,
                 temp: data.list[0].main.temp,
@@ -47,7 +45,17 @@ $(function () {
                 humidity: data.list[0].main.humidity,
                 icon: data.list[0].weather[0].icon,
               };
-              console.log(todayWeather);
+              for (let i = 0; i < forecast.length; i++) {
+                futureWeather = {
+                  date: data.list[i+1].dt,
+                  temp: data.list[i+1].main.temp,
+                  wind: data.list[i+1].wind.speed,
+                  humidity: data.list[i+1].main.humidity,
+                  icon: data.list[i+1].weather[0].icon,
+                }
+                forecast.push(futureWeather)
+                console.log(forecast.length)
+              }
             });
         });
     });
