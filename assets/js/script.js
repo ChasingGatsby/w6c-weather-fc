@@ -45,7 +45,8 @@ $(function () {
                 humidity: data.list[0].main.humidity,
                 icon: data.list[0].weather[0].icon,
               };
-              for (let i = 0; i < forecast.length; i++) {
+              console.log(todayWeather)
+              for (let i = 0; i < 5; i++) {
                 futureWeather = {
                   date: data.list[i+1].dt,
                   temp: data.list[i+1].main.temp,
@@ -54,7 +55,7 @@ $(function () {
                   icon: data.list[i+1].weather[0].icon,
                 }
                 forecast.push(futureWeather)
-                console.log(forecast.length)
+                console.log(forecast[i])
               }
             });
         });
