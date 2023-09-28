@@ -10,6 +10,10 @@ body {
   border-radius: 10px;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 header {
   background-color: #aa0078;
   height: 90px;
@@ -101,5 +105,5 @@ aside input {
 
 .daycard p {
   margin: 25px 0;
-  font-size:20px;
+  font-size: 20px;
 }
