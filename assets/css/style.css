@@ -8,6 +8,10 @@ body {
 
 .button {
   border-radius: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #aa0078;
+  color: white;
 }
 
 .button:hover {
@@ -39,6 +43,8 @@ aside {
   display: flex;
   flex-direction: column;
   height: max-content;
+  border: solid black;
+  height: max-content;
 }
 
 aside h2 {
@@ -52,11 +58,19 @@ aside input {
   padding: 10px;
 }
 
-.button {
-  font-size: 25px;
-  font-weight: bold;
-  background-color: #aa0078;
-  color: white;
+.searchhist {
+  height:500px;
+  border-top:solid gray;
+  margin-top:10px;
+  text-align:center;
+}
+
+.prevsearch {
+  margin: 15px auto;
+  font-size: 20px;
+  width: 450px;
+  color: black;
+  background-color: #B3B3D7;
 }
 
 #weather-display {

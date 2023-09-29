@@ -4,14 +4,15 @@ $(function () {
   let forecast = [];
   let futureWeather;
   let todayWeather;
+  let dayCard;
+
   function clearDisplay() {
-    $('#weather-display').empty()
+    $("#weather-display").empty();
   }
 
   $(document).ready(function () {
     searchBtn.on("click", function () {
-      clearDisplay()
-      $('#weather-display').text
+      clearDisplay();
       let searchTerm = $("#searchterm").val();
       let geoCode =
         "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -53,6 +54,7 @@ $(function () {
               console.log(todayWeather);
               for (let i = 0; i < 5; i++) {
                 futureWeather = {
+                  name: data.city.name,
                   date: dayjs.unix(data.list[i + 1].dt).format("MM/DD/YYYY"),
                   temp: data.list[i + 1].main.temp,
                   wind: data.list[i + 1].wind.speed,
@@ -60,7 +62,7 @@ $(function () {
                   icon: data.list[i + 1].weather[0].icon,
                 };
                 forecast.push(futureWeather);
-                console.log(forecast[i]);
+                console.log(forecast);
               }
 
               $("#weather-display")
@@ -68,12 +70,39 @@ $(function () {
                 .find("div")
                 .addClass("now-weather");
               let todayDisplay = $(".now-weather");
-              todayDisplay.append("<h2>"+ todayWeather.name + ' (' + todayWeather.date + ")</h2>");
+              todayDisplay.append(
+                "<h2>" + todayWeather.name + " (" + todayWeather.date + ")</h2>"
+              );
               todayDisplay.append("<p>Temp: " + todayWeather.temp + "K</p>");
               todayDisplay.append("<p>Wind: " + todayWeather.wind + " mph</p>");
               todayDisplay.append(
                 "<p>Humidity: " + todayWeather.humidity + "%</p>"
               );
+              console.log(forecast);
+              $("#weather-display")
+                .append("<article></article>")
+                .find("article")
+                .attr("id", "fiveday");
+
+              for (let i = 0; i < forecast.length; i++) {
+                $("#fiveday")
+                  .append("<div></div>")
+                  .find("div")
+                  .addClass("daycard");
+              }
+              dayCard = ($('.daycard'))
+              console.log(dayCard)
+
+              for (let i= 0; i < dayCard.length; i++) {
+                dayCard[i].append(
+                  "<h3>" + forecast[i].name + " (" + forecast[i].date + ")</h3>"
+                );
+                dayCard[i].append("<p>Temp: " + forecast[i].temp + "K</p>");
+                dayCard[i].append("<p>Wind: " + forecast[i].wind + " mph</p>");
+                dayCard[i].append(
+                  "<p>Humidity: " + forecast[i].humidity + "%</p>"
+                );
+              }
             });
         });
     });
