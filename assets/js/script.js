@@ -94,14 +94,12 @@ $(function () {
               console.log(dayCard)
 
               for (let i= 0; i < dayCard.length; i++) {
-                dayCard[i].append(
-                  "<h3>" + forecast[i].name + " (" + forecast[i].date + ")</h3>"
-                );
-                dayCard[i].append("<p>Temp: " + forecast[i].temp + "K</p>");
-                dayCard[i].append("<p>Wind: " + forecast[i].wind + " mph</p>");
-                dayCard[i].append(
-                  "<p>Humidity: " + forecast[i].humidity + "%</p>"
-                );
+                $(dayCard[i]).html(`
+                <h3>${forecast[i].date}</h3>
+                <p>Temp: ${forecast[i].temp}K</p>
+                <p>Wind: ${forecast[i].wind} mph</p>
+                <p>Humidity: ${forecast[i].humidity}%</p>
+              `);
               }
             });
         });
