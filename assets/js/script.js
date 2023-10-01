@@ -29,6 +29,7 @@ $(function () {
   function clearHistory() {
     $(".searchhist").empty();
     localStorage.removeItem("history");
+    searchHist = []
   }
 
   function addSearch() {
