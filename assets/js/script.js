@@ -91,6 +91,7 @@ $(function () {
                 <p>Humidity: ${forecast[i].humidity}%</p>
               `);
     }
+    forecast = []
   }
 
   clearBtn.on("click", function () {
