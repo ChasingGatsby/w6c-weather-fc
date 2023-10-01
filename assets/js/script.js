@@ -1,6 +1,5 @@
 $(function () {
   let searchBtn = $(".search");
-  let prevBtn = $(".prevsearch");
   let clearBtn = $("#clearbtn");
   let coord;
   let forecast = [];
@@ -8,18 +7,22 @@ $(function () {
   let todayWeather;
   let dayCard;
   let searchHist = [];
-  let displayHist = JSON.parse(localStorage.getItem("history"));
 
-  for (i = 0; i < displayHist.length; i++) {
-    $(".searchhist").append(
-      '<input type="button" value="' +
-        displayHist[i] +
-        '" class="button prevsearch" />'
-    );
+  if (!(JSON.parse(localStorage.getItem("history")))) {
+    searchHist = []
+  } else {
+    let displayHist = JSON.parse(localStorage.getItem("history"));
+    for (i = 0; i < displayHist.length; i++) {
+      $(".searchhist").append(
+        '<input type="button" value="' +
+          displayHist[i] +
+          '" class="button prevsearch" />'
+      );
+    }
   }
 
   function clearDisplay() {
-    $('#fiveday').remove()
+    $("#fiveday").remove();
     $("#weather-display").empty();
   }
 
@@ -29,7 +32,7 @@ $(function () {
   }
 
   function addSearch() {
-    if (displayHist.includes(todayWeather.name)) {
+    if (searchHist.includes(todayWeather.name)) {
       return;
     } else {
       $(".searchhist").append(
@@ -60,14 +63,19 @@ $(function () {
       .addClass("now-weather");
     let todayDisplay = $(".now-weather");
     todayDisplay.append(
-      "<h2>" + todayWeather.name + " (" + todayWeather.date + ") <img src='http://openweathermap.org/img/w/" + todayWeather.icon + ".png'></h2>"
+      "<h2>" +
+        todayWeather.name +
+        " (" +
+        todayWeather.date +
+        ") <img src='http://openweathermap.org/img/w/" +
+        todayWeather.icon +
+        ".png'></h2>"
     );
     todayDisplay.append("<p>Temp: " + todayWeather.temp + "&#8457;</p>");
     todayDisplay.append("<p>Wind: " + todayWeather.wind + " mph</p>");
     todayDisplay.append("<p>Humidity: " + todayWeather.humidity + "%</p>");
     $("#weather-display").append("<article id='fiveday'></article>");
     fivedayDiv = $("#fiveday");
-
 
     for (let i = 0; i < forecast.length; i++) {
       $("#fiveday").append("<div></div>").find("div").addClass("daycard");
@@ -130,7 +138,6 @@ $(function () {
               icon: data.list[0].weather[0].icon,
             };
             console.log(todayWeather);
-            addSearch();
             for (let i = 0; i < 5; i++) {
               futureWeather = {
                 name: data.city.name,
