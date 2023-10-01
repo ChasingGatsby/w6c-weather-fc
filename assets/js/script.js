@@ -8,8 +8,8 @@ $(function () {
   let dayCard;
   let searchHist = [];
 
-  if (!(JSON.parse(localStorage.getItem("history")))) {
-    searchHist = []
+  if (!JSON.parse(localStorage.getItem("history"))) {
+    searchHist = [];
   } else {
     let displayHist = JSON.parse(localStorage.getItem("history"));
     for (i = 0; i < displayHist.length; i++) {
@@ -29,7 +29,7 @@ $(function () {
   function clearHistory() {
     $(".searchhist").empty();
     localStorage.removeItem("history");
-    searchHist = []
+    searchHist = [];
   }
 
   function addSearch() {
@@ -92,7 +92,7 @@ $(function () {
                 <p>Humidity: ${forecast[i].humidity}%</p>
               `);
     }
-    forecast = []
+    forecast = [];
   }
 
   clearBtn.on("click", function () {
@@ -143,11 +143,11 @@ $(function () {
             for (let i = 0; i < 5; i++) {
               futureWeather = {
                 name: data.city.name,
-                date: dayjs.unix(data.list[i * 9].dt).format("MM/DD/YYYY"),
-                temp: data.list[i * 9].main.temp,
-                wind: data.list[i * 9].wind.speed,
-                humidity: data.list[i * 9].main.humidity,
-                icon: data.list[i * 9].weather[0].icon,
+                date: dayjs.unix(data.list[i * 8].dt).format("MM/DD/YYYY"),
+                temp: data.list[i * 8].main.temp,
+                wind: data.list[i * 8].wind.speed,
+                humidity: data.list[i * 8].main.humidity,
+                icon: data.list[i * 8].weather[0].icon,
               };
               forecast.push(futureWeather);
               console.log(forecast);
@@ -205,11 +205,11 @@ $(function () {
               for (let i = 0; i < 5; i++) {
                 futureWeather = {
                   name: data.city.name,
-                  date: dayjs.unix(data.list[i * 9].dt).format("MM/DD/YYYY"),
-                  temp: data.list[i * 9].main.temp,
-                  wind: data.list[i * 9].wind.speed,
-                  humidity: data.list[i * 9].main.humidity,
-                  icon: data.list[i * 9].weather[0].icon,
+                  date: dayjs.unix(data.list[i * 8].dt).format("MM/DD/YYYY"),
+                  temp: data.list[i * 8].main.temp,
+                  wind: data.list[i * 8].wind.speed,
+                  humidity: data.list[i * 8].main.humidity,
+                  icon: data.list[i * 8].weather[0].icon,
                 };
                 forecast.push(futureWeather);
                 console.log(forecast);
