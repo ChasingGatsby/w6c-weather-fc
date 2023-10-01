@@ -76,12 +76,14 @@ aside input {
   border-top: solid gray;
   margin-top: 10px;
   text-align: center;
+  padding-top: 10px;
 }
 
 .prevsearch {
   margin: 15px auto;
+  margin-bottom:5px;
   font-size: 20px;
-  width: 450px;
+  width: 440px;
   color: black;
   background-color: #b3b3d7;
 }
