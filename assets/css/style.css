@@ -23,6 +23,20 @@ header {
   height: 90px;
   color: white;
   display: flex;
+  position:relative;
+}
+
+#clearbtn {
+  color: white;
+  background-color: #000078;
+  padding:10px;
+  height:max-content;
+  font-size: 20px;
+  position:absolute;
+  top:18px;
+  left:20px;
+  font-style: italic;
+  font-weight: 700
 }
 
 header h1 {
@@ -43,7 +57,6 @@ aside {
   display: flex;
   flex-direction: column;
   height: max-content;
-  border: solid black;
   height: max-content;
 }
 
@@ -59,10 +72,10 @@ aside input {
 }
 
 .searchhist {
-  height:500px;
-  border-top:solid gray;
-  margin-top:10px;
-  text-align:center;
+  height: 500px;
+  border-top: solid gray;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .prevsearch {
@@ -70,7 +83,7 @@ aside input {
   font-size: 20px;
   width: 450px;
   color: black;
-  background-color: #B3B3D7;
+  background-color: #b3b3d7;
 }
 
 #weather-display {

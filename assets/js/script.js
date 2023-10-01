@@ -1,19 +1,63 @@
 $(function () {
   let searchBtn = $(".search");
+  let clearBtn = $("#clearbtn");
   let coord;
   let forecast = [];
   let futureWeather;
   let todayWeather;
   let dayCard;
+  let searchHist = [];
+  let displayHist = JSON.parse(localStorage.getItem("history"));
+
+  for (i = 0; i < displayHist.length; i++) {
+    $(".searchhist").append(
+      '<input type="button" value="' +
+        displayHist[i] +
+        '" class="button prevsearch" />'
+    );
+  }
 
   function clearDisplay() {
     $("#weather-display").empty();
   }
 
+  function clearHistory() {
+    $(".searchhist").empty();
+    localStorage.removeItem("history");
+  }
+
+  function addSearch() {
+    if (searchHist.includes(todayWeather.name)) {
+      return;
+    }
+    $(".searchhist").append(
+      '<input type="button" value="' +
+        todayWeather.name +
+        '" class="button prevsearch" />'
+    );
+    if (localStorage.getItem("history")) {
+      searchHist = JSON.parse(localStorage.getItem("history"));
+      recordHist();
+    } else {
+      recordHist();
+    }
+  }
+
+  function recordHist() {
+    searchHist.push(todayWeather.name);
+    let historyLog = JSON.stringify(searchHist);
+    localStorage.setItem("history", historyLog);
+  }
+
+  clearBtn.on("click", function () {
+    clearHistory();
+  });
+
   $(document).ready(function () {
     searchBtn.on("click", function () {
       clearDisplay();
       let searchTerm = $("#searchterm").val();
+      $("#searchterm").val("");
       let geoCode =
         "http://api.openweathermap.org/geo/1.0/direct?q=" +
         searchTerm +
@@ -52,14 +96,15 @@ $(function () {
                 icon: data.list[0].weather[0].icon,
               };
               console.log(todayWeather);
+              addSearch();
               for (let i = 0; i < 5; i++) {
                 futureWeather = {
                   name: data.city.name,
-                  date: dayjs.unix(data.list[i + 1].dt).format("MM/DD/YYYY"),
-                  temp: data.list[i + 1].main.temp,
-                  wind: data.list[i + 1].wind.speed,
-                  humidity: data.list[i + 1].main.humidity,
-                  icon: data.list[i + 1].weather[0].icon,
+                  date: dayjs.unix(data.list[i * 9].dt).format("MM/DD/YYYY"),
+                  temp: data.list[i * 9].main.temp,
+                  wind: data.list[i * 9].wind.speed,
+                  humidity: data.list[i * 9].main.humidity,
+                  icon: data.list[i * 9].weather[0].icon,
                 };
                 forecast.push(futureWeather);
                 console.log(forecast);
@@ -78,7 +123,6 @@ $(function () {
               todayDisplay.append(
                 "<p>Humidity: " + todayWeather.humidity + "%</p>"
               );
-              console.log(forecast);
               $("#weather-display")
                 .append("<article></article>")
                 .find("article")
@@ -90,10 +134,10 @@ $(function () {
                   .find("div")
                   .addClass("daycard");
               }
-              dayCard = ($('.daycard'))
-              console.log(dayCard)
+              dayCard = $(".daycard");
+              console.log(dayCard);
 
-              for (let i= 0; i < dayCard.length; i++) {
+              for (let i = 0; i < dayCard.length; i++) {
                 $(dayCard[i]).html(`
                 <h3>${forecast[i].date}</h3>
                 <p>Temp: ${forecast[i].temp}K</p>
