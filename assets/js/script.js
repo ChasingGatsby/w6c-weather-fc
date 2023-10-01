@@ -67,7 +67,7 @@ $(function () {
         todayWeather.name +
         " (" +
         todayWeather.date +
-        ") <img src='http://openweathermap.org/img/w/" +
+        ") <img src='https://openweathermap.org/img/w/" +
         todayWeather.icon +
         ".png'></h2>"
     );
@@ -85,7 +85,7 @@ $(function () {
     for (let i = 0; i < dayCard.length; i++) {
       $(dayCard[i]).html(`
                 <h3>${forecast[i].date}</h3>
-                <img src ="http://openweathermap.org/img/w/${forecast[i].icon}.png">
+                <img src ="https://openweathermap.org/img/w/${forecast[i].icon}.png">
                 <p>Temp: ${forecast[i].temp}&#8457;</p>
                 <p>Wind: ${forecast[i].wind} mph</p>
                 <p>Humidity: ${forecast[i].humidity}%</p>
@@ -101,7 +101,7 @@ $(function () {
     let searchTerm = $(this).val();
     console.log(searchTerm);
     let geoCode =
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
       searchTerm +
       "&limit=1&appid=abd9e26df26a80b0ccf0eded91e05ebc";
     fetch(geoCode)
@@ -162,7 +162,7 @@ $(function () {
       let searchTerm = $("#searchterm").val();
       $("#searchterm").val("");
       let geoCode =
-        "http://api.openweathermap.org/geo/1.0/direct?q=" +
+        "https://api.openweathermap.org/geo/1.0/direct?q=" +
         searchTerm +
         "&limit=1&appid=abd9e26df26a80b0ccf0eded91e05ebc";
       fetch(geoCode)
